@@ -4,10 +4,6 @@
   "version": "1.0",
   "description": "엔트리 작품 실행 화면을 변형시킵니다.",
   
-  "permissions": [
-    "activeTab"
-  ],
-  
   "content_scripts": [
     {
       "matches": ["https://playentry.org/*"],
