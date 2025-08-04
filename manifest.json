@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "엔트리-rotasie",
+  "version": "1.0",
+  "description": "엔트리 작품 실행 화면을 변형시킵니다.",
+  
+  "permissions": [
+    "activeTab"
+  ],
+  
+  "content_scripts": [
+    {
+      "matches": ["https://playentry.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["https://playentry.org/*"]
+    }
+  ],
+
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}
