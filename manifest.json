@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "엔트리-rotasie",
-  "version": "1.0",
+  "version": "1.1",
   "description": "엔트리 작품 실행 화면을 변형시킵니다.",
   
   "content_scripts": [

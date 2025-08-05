@@ -49,16 +49,16 @@
     
     if (isNowEntryPage && !isProjectPage) {
       if (isNowProjectPage) {
-        console.log('🎯 Entry 프로젝트 페이지 감지됨. Transform Controller 시작...');
+        //console.log('🎯 Entry 프로젝트 페이지 감지됨. Transform Controller 시작...');
         isProjectPage = true;
         startTransformController(); // 기존 project 로직
       } else if (isNowWSPage) {
-        console.log('🎯 Entry 워크스페이스 페이지 감지됨. Transform Controller 시작...');
+        //console.log('🎯 Entry 워크스페이스 페이지 감지됨. Transform Controller 시작...');
         isProjectPage = true;
         startTransformControllerWS(); // 새로운 ws 로직
       }
     } else if (!isNowEntryPage && isProjectPage) {
-      console.log('📤 Entry 페이지를 벗어남. Transform Controller 중지...');
+      //console.log('📤 Entry 페이지를 벗어남. Transform Controller 중지...');
       isProjectPage = false;
       stopTransformController();
     }
@@ -93,13 +93,13 @@
     if (styleElementMain) {
       styleElementMain.remove();
       styleElementMain = null;
-      console.log('🗑️ 메인 페이지 CSS 스타일 엘리먼트 제거됨');
+      //console.log('🗑️ 메인 페이지 CSS 스타일 엘리먼트 제거됨');
     }
     
     if (styleElementIframe) {
       styleElementIframe.remove();
       styleElementIframe = null;
-      console.log('🗑️ iframe CSS 스타일 엘리먼트 제거됨');
+      //console.log('🗑️ iframe CSS 스타일 엘리먼트 제거됨');
     }
   }
   
@@ -115,7 +115,7 @@
       const iframe = document.querySelector('iframe');
       if (!iframe) {
         if (attempts < maxAttempts) {
-          console.log('🕒 iframe 대기 중...');
+          //console.log('🕒 iframe 대기 중...');
           setTimeout(tryConnect, 500);
         }
         return;
@@ -125,13 +125,13 @@
       const ed = iframe.contentWindow;
       if (!ed.Entry || !ed.Entry.variableContainer) {
         if (attempts < maxAttempts) {
-          console.log('🕒 Entry 로드 대기 중...');
+          //console.log('🕒 Entry 로드 대기 중...');
           setTimeout(tryConnect, 500);
         }
         return;
       }
       
-      console.log('✅ Entry 로드 완료. Transform Controller 활성화됨');
+      //console.log('✅ Entry 로드 완료. Transform Controller 활성화됨');
       startVariableWatcher(ed);
     }
     
@@ -149,7 +149,7 @@
       // 1) Entry + 변수 컨테이너 준비 대기 (직접 접근)
       if (!window.Entry || !window.Entry.variableContainer) {
         if (attempts < maxAttempts) {
-          console.log('🕒 Entry 로드 대기 중...');
+          //console.log('🕒 Entry 로드 대기 중...');
           setTimeout(tryConnect, 500);
         }
         return;
@@ -159,13 +159,13 @@
       const canvas = document.querySelector('#entryCanvas');
       if (!canvas) {
         if (attempts < maxAttempts) {
-          console.log('🕒 #entryCanvas 대기 중...');
+          //console.log('🕒 #entryCanvas 대기 중...');
           setTimeout(tryConnect, 500);
         }
         return;
       }
       
-      console.log('✅ Entry 로드 완료. Transform Controller 활성화됨 (WS)');
+      //console.log('✅ Entry 로드 완료. Transform Controller 활성화됨 (WS)');
       startVariableWatcherWS();
     }
     
@@ -183,7 +183,7 @@
       styleElementMain.setAttribute('data-entry-transform-css', 'true');
       styleElementMain.type = 'text/css';
       document.head.appendChild(styleElementMain);
-      console.log('🎨 메인 페이지 CSS 스타일 엘리먼트 생성됨');
+      //console.log('🎨 메인 페이지 CSS 스타일 엘리먼트 생성됨');
     }
     
     // iframe 스타일 엘리먼트
@@ -192,7 +192,7 @@
       styleElementIframe.setAttribute('data-entry-transform-css', 'true');
       styleElementIframe.type = 'text/css';
       (iframeDoc.head || iframeDoc.documentElement).appendChild(styleElementIframe);
-      console.log('🎨 iframe CSS 스타일 엘리먼트 생성됨');
+      //console.log('🎨 iframe CSS 스타일 엘리먼트 생성됨');
     }
     
     return { main: styleElementMain, iframe: styleElementIframe };
@@ -211,7 +211,7 @@
     const rotasieVar = ed.Entry.variableContainer.getVariableByName('|rotasie|');
     if (rotasieVar) {
       rotasieVar.value_ = 1;
-      console.log('✏️ |rotasie| 변수를 1로 설정했습니다.');
+      //console.log('✏️ |rotasie| 변수를 1로 설정했습니다.');
     }
     
     // 변수 값 지속적으로 읽어와서 적용 (10ms마다)
@@ -247,7 +247,7 @@
       } else {
         rotasieVar.value_ = 1;
       }
-      console.log('✏️ |rotasie| 변수를 1로 설정했습니다.');
+      //console.log('✏️ |rotasie| 변수를 1로 설정했습니다.');
     }
     
     // 변수 값 지속적으로 읽어와서 적용 (10ms마다)
@@ -330,7 +330,7 @@
       styleElementIframe.textContent = cssRule;
     }
     
-    console.log('🎨 Canvas Styles 업데이트 (메인 + iframe):', { transform: transformString, filter: filterString });
+    //console.log('🎨 Canvas Styles 업데이트 (메인 + iframe):', { transform: transformString, filter: filterString });
   }
   
   // Canvas Transform 및 Filter CSS 업데이트 (WS 페이지용)
@@ -378,7 +378,7 @@
       styleElementMain.textContent = cssRule;
     }
     
-    console.log('🎨 Canvas Styles 업데이트 (WS):', { transform: transformString, filter: filterString });
+    //console.log('🎨 Canvas Styles 업데이트 (WS):', { transform: transformString, filter: filterString });
   }
   
   // URL 변경 감지 설정
